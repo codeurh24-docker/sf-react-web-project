@@ -27,6 +27,20 @@ services:
     networks:
       - app_net
 
+  apache2-php:
+    image: super/hero
+    container_name: back-end
+    ports:
+      - 8888:8000
+    volumes:
+      - ./back/project:/var/www/html
+      - ./back:/app
+    command: bash -c "sh /app/install.sh"
+    depends_on:
+      - db
+    networks:
+      - app_net
+
   nodejs:
     image: node:14.14
     container_name: frond-end 
@@ -41,19 +55,7 @@ services:
     networks:
       - app_net
 
-  apache2-php:
-    image: super/hero
-    container_name: back-end
-    # environment:
-    #   PHP_VERSION: 8.0.0RC2
-    ports:
-      - 8888:8000
-    volumes:
-      - ./back/project:/var/www/html
-      - ./back:/app
-    command: bash -c "sh /app/install.sh"
-    networks:
-      - app_net
+
 
 networks:
   app_net:
