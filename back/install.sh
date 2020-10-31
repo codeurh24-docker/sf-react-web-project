@@ -12,9 +12,11 @@ cd /var/www/html
 php bin/console d:d:c
 echo "CREATE USER TABLE"
 php bin/console d:s:u --force
+echo "CREATE USER IN USER TABLE"
+php bin/console user:create admin@yopmail.com password
 echo "INSTALL JWT"
 composer require jwt-auth
-echo "GNERATE KEYS JWT"
+echo "GENERATE KEYS JWT"
 sh /app/JWT_generate_keys.sh
 echo "RUN SERVER BACK"
 cd /var/www/html
