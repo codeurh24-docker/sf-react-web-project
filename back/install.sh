@@ -12,6 +12,10 @@ cd /var/www/html
 php bin/console d:d:c
 echo "CREATE USER TABLE"
 php bin/console d:s:u --force
+echo "INSTALL JWT"
+composer require jwt-auth
+echo "GNERATE KEYS JWT"
+sh /app/JWT_generate_keys.sh
 echo "RUN SERVER BACK"
 cd /var/www/html
 php -S 0.0.0.0:8000 -t public
