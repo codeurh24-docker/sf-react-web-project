@@ -8,7 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - /home/codeurh24/Téléchargements/bookshop-api/mariadb:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql
     ports:
       - 3306:3306
     # IP 172.16.238.10 dans back/install.php
@@ -35,8 +35,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /home/codeurh24/Téléchargements/bookshop-api/front/project:/var/www/html
-      - /home/codeurh24/Téléchargements/bookshop-api/front:/app
+      - ./front/project:/var/www/html
+      - ./front:/app
     command: bash -c "sh /app/run_server.sh"
     networks:
       - app_net
@@ -49,8 +49,8 @@ services:
     ports:
       - 8888:8000
     volumes:
-      - /home/codeurh24/Téléchargements/bookshop-api/back/project:/var/www/html
-      - /home/codeurh24/Téléchargements/bookshop-api/back:/app
+      - ./back/project:/var/www/html
+      - ./back:/app
     command: bash -c "sh /app/install.sh"
     networks:
       - app_net
