@@ -17,3 +17,8 @@ $ sudo docker-compose up -d
 [URLREACT]: <http://localhost:3000>
 [URLUIDB]: <http://localhost:8080>
 [URLDB]: <http://localhost:3306>
+
+#### Login with Adminer
+Host: 172.16.238.10
+User: root
+Password: password
