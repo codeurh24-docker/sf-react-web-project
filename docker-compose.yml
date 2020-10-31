@@ -2,30 +2,30 @@ version: '3.1'
 
 services:
 
-  # db:
-  #   image: mariadb
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password
-  #   volumes:
-  #     - /home/codeurh24/Téléchargements/bookshop-api/mariadb:/var/lib/mysql
-  #   ports:
-  #     - 3306:3306
-  #   # IP 172.16.238.10 dans back/install.php
-  #   networks:
-  #     app_net:
-  #       ipv4_address: 172.16.238.10
-  #       ipv6_address: 2001:3984:3989::10
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - /home/codeurh24/Téléchargements/bookshop-api/mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
+    # IP 172.16.238.10 dans back/install.php
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+        ipv6_address: 2001:3984:3989::10
 
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - app_net
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - app_net
 
   nodejs:
     image: node:14.14
@@ -41,19 +41,19 @@ services:
     networks:
       - app_net
 
-  # apache2-php:
-  #   image: super/hero
-  #   container_name: back-end
-  #   # environment:
-  #   #   PHP_VERSION: 8.0.0RC2
-  #   ports:
-  #     - 8888:8000
-  #   volumes:
-  #     - /home/codeurh24/Téléchargements/bookshop-api/back/project:/var/www/html
-  #     - /home/codeurh24/Téléchargements/bookshop-api/back:/app
-  #   command: bash -c "sh /app/install.sh"
-  #   networks:
-  #     - app_net
+  apache2-php:
+    image: super/hero
+    container_name: back-end
+    # environment:
+    #   PHP_VERSION: 8.0.0RC2
+    ports:
+      - 8888:8000
+    volumes:
+      - /home/codeurh24/Téléchargements/bookshop-api/back/project:/var/www/html
+      - /home/codeurh24/Téléchargements/bookshop-api/back:/app
+    command: bash -c "sh /app/install.sh"
+    networks:
+      - app_net
 
 networks:
   app_net:
