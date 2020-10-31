@@ -18,6 +18,10 @@ echo "INSTALL JWT"
 composer require jwt-auth
 echo "GENERATE KEYS JWT"
 sh /app/JWT_generate_keys.sh
+echo "CHANGE SECURITE FOR JWT"
+cd /var/www/html/config/packages
+mv security.yaml security.yaml.back
+cp security.yaml.jwt security.yaml
 echo "RUN SERVER BACK"
 cd /var/www/html
 php -S 0.0.0.0:8000 -t public
