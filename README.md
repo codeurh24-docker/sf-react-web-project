@@ -22,3 +22,9 @@ $ sudo docker-compose up -d
 Host: 172.16.238.10  
 User: root  
 Password: password  
+
+### Authentication test
+
+```sh
+$ sudo docker exec -it back-end curl -X POST -H "Content-Type: application/json" http://localhost:8000/api/login_check -d '{"username":"admin@yopmail.com","password":"password"}'
+```
