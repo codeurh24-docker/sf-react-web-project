@@ -29,7 +29,7 @@ services:
 
   nodejs:
     image: node:14.14
-    container_name: frond-end 
+    container_name: front-end 
     stdin_open: true
     tty: true 
     ports:
@@ -42,7 +42,7 @@ services:
       - app_net
 
   apache2-php:
-    image: super/hero
+    build: _build-php-image
     container_name: back-end
     # environment:
     #   PHP_VERSION: 8.0.0RC2
