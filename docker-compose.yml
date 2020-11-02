@@ -42,7 +42,7 @@ services:
       - app_net
 
   apache2-php:
-    build: _build-php-image
+    build: ./_build-php-image
     container_name: back-end
     # environment:
     #   PHP_VERSION: 8.0.0RC2
